@@ -8,9 +8,9 @@ const Container = styled.div`
 `
 
 const Gallery = styled.div`
-  width: calc(100% - 350px);
+  width: calc(100% - 500px);
   padding-top: 4rem;
-  margin-left: 4rem;
+  margin-left: 8rem;
 
   opacity: ${props => props.contactOpen ? "0" : "1"};
   transition: opacity 200ms ease-out;
@@ -25,14 +25,12 @@ const Gallery = styled.div`
   }
 `
 
-
-
 const ContactLink = styled.div`
   z-index: 1;
   position: fixed;
   bottom: 0;
   right: 0;
-  padding: 2rem;
+  padding: 0 3rem 2em 0;
   line-height: 1;
   cursor: pointer;
   text-transform: uppercase;
@@ -48,7 +46,7 @@ const Header = styled.header`
   right: 0;
   height: 100vh;
   text-align: right;
-  padding-right: 2rem;
+  padding-right: 3rem;
 
   display: flex;
   flex-direction: column;
@@ -80,8 +78,6 @@ const Subtitle = styled.h3`
     font-size: 2.4rem;
   }
 `
-
-
 
 export default class IndexPage extends React.Component {
   constructor(props) {
