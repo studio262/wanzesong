@@ -81,11 +81,6 @@ const Subtitle = styled.h3`
   }
 `
 
-<<<<<<< HEAD
-=======
-
-// page component
->>>>>>> 3d1a8548c18aff971edfaeb2d5e9a07fe5f149a1
 export default class IndexPage extends React.Component {
   constructor(props) {
     super(props);
