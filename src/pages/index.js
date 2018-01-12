@@ -3,6 +3,8 @@ import Link from 'gatsby-link'
 import styled from 'styled-components'
 import Img from "gatsby-image"
 
+
+// styled components
 const Container = styled.div`
   width: 100%;
 `
@@ -79,6 +81,11 @@ const Subtitle = styled.h3`
   }
 `
 
+<<<<<<< HEAD
+=======
+
+// page component
+>>>>>>> 3d1a8548c18aff971edfaeb2d5e9a07fe5f149a1
 export default class IndexPage extends React.Component {
   constructor(props) {
     super(props);
@@ -128,6 +135,7 @@ export default class IndexPage extends React.Component {
   }
 }
 
+// data query
 export const query = graphql`
   query IndexQuery {
     contentfulInfo {
