@@ -3,6 +3,8 @@ import Link from 'gatsby-link'
 import styled from 'styled-components'
 import Img from "gatsby-image"
 
+
+// styled components
 const Container = styled.div`
   width: 100%;
 `
@@ -24,8 +26,6 @@ const Gallery = styled.div`
     margin: 2rem;
   }
 `
-
-
 
 const ContactLink = styled.div`
   z-index: 1;
@@ -82,7 +82,7 @@ const Subtitle = styled.h3`
 `
 
 
-
+// page component
 export default class IndexPage extends React.Component {
   constructor(props) {
     super(props);
@@ -132,6 +132,7 @@ export default class IndexPage extends React.Component {
   }
 }
 
+// data query
 export const query = graphql`
   query IndexQuery {
     contentfulInfo {
