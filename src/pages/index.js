@@ -13,7 +13,7 @@ const Gallery = styled.div`
   margin-left: 4rem;
 
   opacity: ${props => props.contactOpen ? "0" : "1"};
-  transition: opacity 250ms ease-out;
+  transition: opacity 200ms ease-out;
 
   .image {
     margin-bottom: 4rem;
@@ -66,6 +66,7 @@ const Header = styled.header`
 
 const Title = styled.h1`
   text-transform: uppercase;
+  margin-bottom: 0;
 
   @media (max-width: 600px) {
     font-size: 2.4rem;
