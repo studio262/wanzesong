@@ -53,7 +53,7 @@ injectGlobal`
   body {
       margin: 0;
 
-      font-size: 1.6em;
+      font-size: 1.2em;
       line-height: 1.6;
       font-weight: 400;
       font-family: 'Times', serif;

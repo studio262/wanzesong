@@ -10,9 +10,9 @@ const Container = styled.div`
 `
 
 const Gallery = styled.div`
-  width: calc(100% - 500px);
+  width: calc(100% - 350px);
   padding-top: 4rem;
-  margin-left: 8rem;
+  margin-left: 4rem;
 
   opacity: ${props => props.contactOpen ? "0" : "1"};
   transition: opacity 200ms ease-out;
@@ -32,13 +32,15 @@ const ContactLink = styled.div`
   position: fixed;
   bottom: 0;
   right: 0;
-  padding: 0 3rem 2em 0;
+  padding: 0 3rem 2rem 0;
   line-height: 1;
   cursor: pointer;
   text-transform: uppercase;
+  font-size: 1.5rem;
 
   @media (max-width: 600px) {
     font-size: 2.4rem;
+    padding-bottom: 2rem;
   }
 `
 
@@ -74,7 +76,7 @@ const Title = styled.h1`
 `
 const Subtitle = styled.h3`
   height: 100px;
-  line-height: ${props => props.contactOpen ? "1.2" : "auto"};
+  line-height: ${props => props.contactOpen ? "1.4" : "auto"};
 
   @media (max-width: 600px) {
     font-size: 2.4rem;
