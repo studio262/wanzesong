@@ -10,15 +10,23 @@ const Container = styled.div`
 `
 
 const Gallery = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: calc(100% - 350px);
-  padding-top: 4rem;
   margin-left: 4rem;
+  height: 100vh;
 
   opacity: ${props => props.contactOpen ? "0" : "1"};
   transition: opacity 200ms ease-out;
 
   .image {
-    margin-bottom: 4rem;
+    width: 100%;
+    height: auto;
+  }
+
+  .inner-image {
+
   }
 
   @media (max-width: 600px) {
@@ -28,7 +36,7 @@ const Gallery = styled.div`
 `
 
 const ContactLink = styled.div`
-  z-index: 1;
+  z-index: 2;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -45,7 +53,7 @@ const ContactLink = styled.div`
 `
 
 const Header = styled.header`
-  z-index: 1;
+  z-index: 2;
   position: fixed;
   right: 0;
   height: 100vh;
@@ -55,6 +63,11 @@ const Header = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   @media (max-width: 600px) {
     top: 0;
@@ -74,6 +87,7 @@ const Title = styled.h1`
     font-size: 2.4rem;
   }
 `
+
 const Subtitle = styled.h3`
   height: 100px;
   line-height: ${props => props.contactOpen ? "1.4" : "auto"};
@@ -82,21 +96,75 @@ const Subtitle = styled.h3`
     font-size: 2.4rem;
   }
 `
+const ButtonContainer = styled.div`
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+`
+
+const Button = styled.button`
+  outline: none;
+  background: transparent;
+  width: 50%;
+  height: 100vh;
+  border: none;
+  cursor: ${props => {
+    switch (props.direction) {
+      case 'RIGHT':
+        return 'e-resize';
+      case 'LEFT':
+        return 'w-resize';
+    }
+  }};
+`
+
 
 export default class IndexPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      contactOpen: false
-    }
+      contactOpen: false,
+      currentImage: 0
+    };
+
+    this.imageNum = this.props.data.contentfulIndexGallery.images.length;
   }
 
   toggleContact = () => {
-    this.setState({
-      contactOpen: !this.state.contactOpen
-    })
-  }
+    this.setState(prevState => ({
+      contactOpen: !prevState.contactOpen
+    }))
+  };
+
+  incrementImage = () => {
+
+    if (this.state.currentImage + 1 >= this.imageNum) {
+      this.setState({
+        currentImage: 0
+      })
+    } else {
+      this.setState(prevState => ({
+        currentImage: prevState.currentImage + 1
+      }))
+    }
+    console.log(this.state.currentImage);
+  };
+
+  decrementImage = () => {
+
+    if (this.state.currentImage - 1 < 0) {
+      this.setState({
+        currentImage: this.imageNum
+      })
+    } else {
+      this.setState(prevState => ({
+        currentImage: prevState.currentImage - 1
+      }))
+    }
+    console.log(this.state.currentImage);
+  };
 
   render() {
     const info = this.props.data.contentfulInfo;
@@ -117,14 +185,27 @@ export default class IndexPage extends React.Component {
           )}
         </Header>
 
+        <ButtonContainer>
+          <Button
+            onClick={this.decrementImage}
+            direction={'LEFT'}
+          />
+          <Button
+            onClick={this.incrementImage}
+            direction={'RIGHT'}
+          />
+        </ButtonContainer>
+
         <ContactLink onClick={this.toggleContact}>
           <h3>{ this.state.contactOpen ? "Close" : "Contact" }</h3>
         </ContactLink>
 
         <Gallery contactOpen={this.state.contactOpen}>
-          {images.map( image => (
-            <Img sizes={image.sizes} outerWrapperClassName="image"/>
-          ))}
+            <Img
+              sizes={images[this.state.currentImage].sizes}
+              outerWrapperClassName="image"
+              className="inner-image"
+            />
         </Gallery>
 
       </Container>
