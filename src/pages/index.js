@@ -109,6 +109,7 @@ const Button = styled.button`
   width: 50%;
   height: 100vh;
   border: none;
+  
   cursor: ${props => {
     switch (props.direction) {
       case 'RIGHT':
